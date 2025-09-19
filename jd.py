@@ -11,11 +11,10 @@ from rk import *
 url = 'https://passport.jd.com/new/login.aspx'
 
 headers = {
-        'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
-        'ContentType': 'text/html; charset=utf-8',
-        'Accept-Encoding':'gzip, deflate, sdch',
-        'Accept-Language':'zh-CN,zh;q=0.8',
-        'Connection' : 'keep-alive',
+        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+        'Accept-Encoding':'gzip, deflate, br, zstd',
+        'Accept-Language':'zh-CN,zh;q=0.9',
+        # 'Connection' : 'keep-alive',
 }
 
 s = requests.Session()
@@ -26,6 +25,8 @@ s.headers = headers
 req1 = s.get(url=url, headers=headers)
 print(req1.text)
 sel = etree.HTML(req1.content)
+print(req1.text)
+
 uuid = sel.xpath('//input[@id="uuid"]/@value')[0]
 
 eid = sel.xpath('//input[@id="eid"]/@value')[0]
