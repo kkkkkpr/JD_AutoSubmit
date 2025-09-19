@@ -24,7 +24,7 @@ s.headers = headers
 
 # 请求登录页面
 req1 = s.get(url=url, headers=headers)
-
+print(req1.text)
 sel = etree.HTML(req1.content)
 uuid = sel.xpath('//input[@id="uuid"]/@value')[0]
 
